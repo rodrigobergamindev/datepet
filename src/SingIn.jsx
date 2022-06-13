@@ -1,29 +1,26 @@
 import React, {useState, useEffect} from 'react'
 import {
-    Box,
-    Text,
     VStack,
-    HStack,
-    Heading,
     FormControl,
     FormLabel,
     FormErrorMessage,
-    FormHelperText,
     Input,
     Button,
-    
+    Image,
+    Radio, 
+    RadioGroup,
+    Stack,
+    HStack,
+    Text
   } from '@chakra-ui/react';
-import axios from 'axios'
+
 import {Formik, Field, Form} from 'formik'
 import { Link, useNavigate } from "react-router-dom";
-import { SessionContext, getSessionCookie, setSessionCookie } from "./contexts/useSession"
-import jwt_decode from "jwt-decode";
+import logo from './images/logo.png'
 
 export default function SignIn() {
 
-    const [session, setSession] = useState(getSessionCookie());
-
-
+  const [value, setValue] = useState('Paciente')
     const navigate = useNavigate()
     
     function validate(value) {
@@ -34,70 +31,30 @@ export default function SignIn() {
         return error
       }
 
-      useEffect(() => {
-        
-        
-        setTimeout(async () => {
-          if(session){
-           const user = jwt_decode(session)
-           navigate(`/profile/${user.user}`)
-          }
-        }, 100)
-    },[session])
-
   return (
 
-      <VStack width="100%" height="100vh" alignItems="center" justifyContent="center" spacing={8}>
-       
-        <Heading>Sign In</Heading>
+      <VStack width="100%" height="100vh" alignItems="center" justifyContent="center" spacing={12}>
+
+        <Image src={logo} width="250px"/>
+      
           
-        <VStack>
+        <VStack spacing={10}>
         <Formik
-      initialValues={{ username: '', password: '' }}
+      initialValues={{ cpf: '', password: '', tipo: '' }}
       onSubmit={(values, actions) => {
-        const {username, password} = values
-       setTimeout(async () => {
-     
-        try {
-            const sendValues = await axios.post('http://localhost:8080/auth', {
-                username,
-                password
-            },
-            {
-                withCredentials: true
-            })
-    
-        if(sendValues.data.token){
-            setSessionCookie(sendValues.data.token)
-
-            if(getSessionCookie()){
-              const username = jwt_decode(sendValues.data.token)
-              navigate(`/profile/${username.user}`)
-            }
-  
-        }
-
-       
-        actions.setSubmitting(false)
-        } catch (error) {
-            console.log(error)
-            if(error.response.status === 400){
-                alert('Dados inválidos')
-            }
-            actions.setSubmitting(false)
-        }
-      }, 1000)
+        const {cpf, password} = values
+        console.log(values)
       }}
 
     >
       {(props) => (
         <Form>
-          <Field name='username' validate={validate}>
+          <Field name='cpf' validate={validate}>
             {({ field, form }) => (
-              <FormControl isInvalid={form.errors.username && form.touched.username}>
-                <FormLabel htmlFor='username'>Username</FormLabel>
-                <Input {...field} id='username' placeholder='username' />
-                <FormErrorMessage>{form.errors.username}</FormErrorMessage>
+              <FormControl isInvalid={form.errors.cpf && form.touched.cpf}>
+                <FormLabel htmlFor='cpf' textAlign="center" fontWeight="bold" color="blue.700">CPF</FormLabel>
+                <Input {...field} id='cpf' backgroundColor="gray.300" placeholder='Digite seu cpf' />
+                <FormErrorMessage>{form.errors.cpf}</FormErrorMessage>
               </FormControl>
             )}
           </Field>
@@ -106,9 +63,24 @@ export default function SignIn() {
           <Field name='password' validate={validate}>
             {({ field, form }) => (
               <FormControl isInvalid={form.errors.password && form.touched.password}>
-                <FormLabel htmlFor='password'>Password</FormLabel>
-                <Input {...field} id='password' placeholder='password' />
+                <FormLabel marginTop="12px" htmlFor='password' textAlign="center" fontWeight="bold"  color="blue.700">Senha</FormLabel>
+                <Input {...field} id='password' type="password" backgroundColor="gray.300" placeholder='Digite sua senha' />
                 <FormErrorMessage>{form.errors.password}</FormErrorMessage>
+              </FormControl>
+            )}
+          </Field>
+
+          <Field name='tipo' validate={validate}>
+            {({ field, form }) => (
+              <FormControl isInvalid={form.errors.tipo && form.touched.tipo}>
+
+                <RadioGroup onChange={setValue} id="tipo" value={value}>
+                  <Stack marginTop="20px" direction='row'>
+                    <Radio value='Paciente' >Paciente</Radio>
+                    <Radio value='Gestão'>Gestão</Radio>
+                  </Stack>
+                </RadioGroup>
+                <FormErrorMessage>{form.errors.tipo}</FormErrorMessage>
               </FormControl>
             )}
           </Field>
@@ -116,17 +88,30 @@ export default function SignIn() {
 
           <Button
             mt={4}
-            colorScheme='blue'
+            colorScheme="blue"
             isLoading={props.isSubmitting}
             type='submit'
+            width="100%"
           >
-            Sign Up
+            Entrar
           </Button>
         </Form>
       )}
-    </Formik>
-        </VStack>
+      </Formik>
 
+
+      <VStack alignSelf="flex-start" alignItems="flex-start" justifyContent="flex-start">
+        <Link to="/register">
+          <Text color="blue.500">+ Criar conta</Text> 
+        </Link>
+
+        <Link to="/forgot">
+          <Text color="blue.500">Esqueci a senha</Text> 
+        </Link>
+      </VStack>
+        </VStack>
+      
+     
       </VStack>
 
   )

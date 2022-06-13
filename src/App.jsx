@@ -11,29 +11,42 @@ import {
   Routes
 } from "react-router-dom";
 import Profile from './Profile';
-import Home from './Home';
 import Register from './Register';
-import Create from './Create';
 import SignIn from './SingIn';
-
-import { SessionContext, getSessionCookie, setSessionCookie } from "./contexts/useSession"
+import Gestao from './Gestao'
+import Pacient from './Pacient';
+import Dashboard from './Dashboard';
+import Recompensas from './Recompensas';
+import Questionario from './Questionario';
+import Informativo from './Informativo';
+import DashboardPacient from './DashboardPacient';
+import Resgatar from './Resgatar';
+import Agenda from './Agenda';
 
 function App() {
 
-  const [session, setSession] = useState(getSessionCookie());
+
 
   return (
     <BrowserRouter>
     
-    <SessionContext.Provider value={session}>
+   
     <Routes>
-              <Route path='/' element={<Home/>}/>
+
               <Route path='register' element={<Register/>}/>
               <Route path='profile/:slug' element={<Profile/>}/>
-              <Route path='create/:slug' element={<Create/>}/>
-              <Route path='/signin' element={<SignIn/>}/>
+              <Route path='gestao' element={<Gestao/>}/>
+              <Route path='/' element={<SignIn/>}/>
+              <Route path='pacient' element={<Pacient/>}/>
+              <Route path='dashboard' element={<Dashboard/>}/>
+              <Route path='recompensas' element={<Recompensas/>}/>
+              <Route path='questionario' element={<Questionario/>}/>
+              <Route path='informativo' element={<Informativo/>}/>
+              <Route path='dashboard-pacient' element={<DashboardPacient/>}/>
+              <Route path='resgatar' element={<Resgatar/>}/>
+              <Route path='agenda' element={<Agenda/>}/>
     </Routes>
-    </SessionContext.Provider>
+
 
     </BrowserRouter>
   );
