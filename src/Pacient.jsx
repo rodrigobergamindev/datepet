@@ -25,7 +25,7 @@ export default function Pacient() {
 
   return (
 
-      <VStack width="100%" height="100vh" alignItems="center" justifyContent="center" spacing={5}>
+      <VStack width="100%" alignItems="center" justifyContent="center" spacing={5}>
         
         <Heading fontStyle="italic" fontWeight="normal" color="blue.700">Gestão de dados</Heading>
 

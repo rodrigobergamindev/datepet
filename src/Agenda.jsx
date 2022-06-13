@@ -21,7 +21,7 @@ export default function Agenda() {
 
   return (
 
-      <VStack width="100%" height="100vh" alignItems="center" justifyContent="center" spacing={12}>
+      <VStack width="100%" alignItems="center" justifyContent="center" spacing={12}>
           
         <VStack spacing={5} width="100%" padding="20px" overflowX="scroll">
 
@@ -80,7 +80,7 @@ export default function Agenda() {
             </HStack>
 
 
-            <HStack width="100%">
+            <HStack height="100px" width="100%">
 
                 <VStack >
                     <Text fontSize="13px">08:00 a.m</Text>
@@ -105,7 +105,7 @@ export default function Agenda() {
                 </VStack>
             </HStack>
 
-            <HStack width="100%">
+            <HStack height="100px" width="100%">
 
                 <VStack >
                     <Text fontSize="13px">09:45 a.m</Text>
@@ -128,7 +128,7 @@ export default function Agenda() {
                 </VStack>
             </HStack>
 
-            <HStack width="100%">
+            <HStack height="100px" width="100%">
 
                 <VStack >
                     <Text fontSize="13px">10:50 a.m</Text>
@@ -150,7 +150,7 @@ export default function Agenda() {
                 </VStack>
             </HStack>
 
-            <HStack width="100%">
+            <HStack height="100px" width="100%">
 
                 <VStack >
                     <Text fontSize="13px">02:40 p.m</Text>
@@ -173,7 +173,7 @@ export default function Agenda() {
             </HStack>
 
 
-            <HStack width="100%">
+            <HStack height="100px" width="100%">
 
                 <VStack >
                     <Text fontSize="13px">04:00 p.m</Text>

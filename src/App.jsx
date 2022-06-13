@@ -22,6 +22,8 @@ import Informativo from './Informativo';
 import DashboardPacient from './DashboardPacient';
 import Resgatar from './Resgatar';
 import Agenda from './Agenda';
+import DrawerMenu from './Drawer';
+import { HStack } from '@chakra-ui/react';
 
 function App() {
 
@@ -30,6 +32,9 @@ function App() {
   return (
     <BrowserRouter>
     
+    <HStack alignItems="flex-end" justifyContent="flex-end" backgroundColor="blue.900">
+      <DrawerMenu/>
+    </HStack>
    
     <Routes>
 
@@ -46,7 +51,7 @@ function App() {
               <Route path='resgatar' element={<Resgatar/>}/>
               <Route path='agenda' element={<Agenda/>}/>
     </Routes>
-
+   
 
     </BrowserRouter>
   );
