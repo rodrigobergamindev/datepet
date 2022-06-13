@@ -42,8 +42,8 @@ export default function SignIn() {
         <Formik
       initialValues={{ cpf: '', password: '', tipo: '' }}
       onSubmit={(values, actions) => {
-        const {cpf, password} = values
         console.log(values)
+        
       }}
 
     >
@@ -73,8 +73,8 @@ export default function SignIn() {
           <Field name='tipo' validate={validate}>
             {({ field, form }) => (
               <FormControl isInvalid={form.errors.tipo && form.touched.tipo}>
-
-                <RadioGroup onChange={setValue} id="tipo" value={value}>
+                
+                <RadioGroup {...field} onChange={setValue} id="tipo" value={value}>
                   <Stack marginTop="20px" direction='row'>
                     <Radio value='Paciente' >Paciente</Radio>
                     <Radio value='Gestão'>Gestão</Radio>
@@ -90,6 +90,7 @@ export default function SignIn() {
             mt={4}
             colorScheme="blue"
             isLoading={props.isSubmitting}
+            onClick={() => setTimeout(() => navigate('/recompensas'), 1000)}
             type='submit'
             width="100%"
           >

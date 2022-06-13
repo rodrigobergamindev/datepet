@@ -6,10 +6,11 @@ import {
   } from '@chakra-ui/react';
 
 import logo from './images/logo.png'
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
 
-
+  const navigate = useNavigate()
     
 
   return (
@@ -27,6 +28,7 @@ export default function Dashboard() {
             type='submit'
             width="100%"
             color="whiteAlpha.900"
+            onClick={() => navigate('/gestao')}
           >
             Início
           </Button>

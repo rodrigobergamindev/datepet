@@ -17,7 +17,7 @@ import ultrafarma from './images/ultrafarma.png'
 
 export default function Questionario() {
 
-
+  const navigate = useNavigate()
     
 
   return (
@@ -43,7 +43,7 @@ export default function Questionario() {
              </Text>
             </Box>
 
-            <Text color="blue.400" alignSelf="flex-end">Próximo</Text>
+            <Text color="blue.400" alignSelf="flex-end"><Link to="/resgatar">Próximo</Link></Text>
           </VStack>
 
 

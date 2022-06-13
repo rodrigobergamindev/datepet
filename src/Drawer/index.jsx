@@ -20,7 +20,7 @@ import {
   } from '@chakra-ui/react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars,faHome, faList, faLocationDot, faPhone, faCalendar, faUser} from '@fortawesome/free-solid-svg-icons'
+import { faBars,faHome, faList, faLocationDot, faPhone, faCalendar,faRss ,faUser, faSignOut} from '@fortawesome/free-solid-svg-icons'
 import {Link} from 'react-router-dom'
 
   
@@ -62,7 +62,7 @@ export default function DrawerMenu() {
                     
                 
                 <Button colorScheme="blue" size='lg' width={"full"}>
-                  <HStack align="center" justify="center"><FontAwesomeIcon icon={faHome} fontSize="16px"/><Link to="pedidos"><Text>Início</Text></Link></HStack>
+                  <HStack align="center" justify="center"><FontAwesomeIcon icon={faHome} fontSize="16px"/><Link to="/dashboard"><Text>Início</Text></Link></HStack>
                    
                   </Button>
               
@@ -70,7 +70,7 @@ export default function DrawerMenu() {
               
                 <VStack width="full">
                   <Button colorScheme="blue" size='lg' width={"full"}>
-                    <HStack align="center" justify="center"><FontAwesomeIcon icon={faUser} fontSize="16px"/> <Link to="conta"><Text>Minha Conta</Text></Link></HStack>
+                    <HStack align="center" justify="center"><FontAwesomeIcon icon={faUser} fontSize="16px"/> <Link to="/dashboard-pacient"><Text>Minha Conta</Text></Link></HStack>
                    
                   </Button>
                 </VStack>
@@ -82,7 +82,18 @@ export default function DrawerMenu() {
                     
                 
                 <Button colorScheme="blue" size='lg' width={"full"}>
-                  <HStack align="center" justify="center"><FontAwesomeIcon icon={faCalendar} fontSize="16px"/><Link to="pedidos"><Text>Agenda</Text></Link></HStack>
+                  <HStack align="center" justify="center"><FontAwesomeIcon icon={faCalendar} fontSize="16px"/><Link to="/agenda"><Text>Agenda</Text></Link></HStack>
+                   
+                  </Button>
+              
+                </VStack>
+
+                <VStack width="full">
+
+                    
+                
+                <Button colorScheme="blue" size='lg' width={"full"}>
+                  <HStack align="center" justify="center"><FontAwesomeIcon icon={faRss} fontSize="16px"/><Link to="/informativo"><Text>Novidades</Text></Link></HStack>
                    
                   </Button>
               
@@ -92,7 +103,11 @@ export default function DrawerMenu() {
 
                 <VStack width="full">
                   <Button colorScheme="blue" size='lg' width={"full"}>
-                  <HStack align="center" justify="center"><FontAwesomeIcon icon={faPhone} fontSize="16px"/> <Text>Contato</Text></HStack>
+                  <HStack align="center" justify="center"><FontAwesomeIcon icon={faSignOut} fontSize="16px"/>
+                  <Link to="/">
+                  <Text>Sair</Text>
+                  </Link>
+                  </HStack>
                   </Button>
                 </VStack>
 

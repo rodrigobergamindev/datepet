@@ -9,19 +9,21 @@ import {
   } from '@chakra-ui/react';
 
 
-import { Link, useNavigate } from "react-router-dom";
+
 import logo from './images/logo.png'
 import bradesco from './images/bradesco.png'
 import ultrafarma from './images/ultrafarma.png'
+import { Link, useNavigate } from "react-router-dom";
+
 
 export default function Recompensas() {
 
-
+    const navigate = useNavigate()
     
 
   return (
 
-      <VStack width="100%" alignItems="center" justifyContent="center" spacing={12}>
+      <VStack width="100%" mt={10} alignItems="center" justifyContent="center" spacing={12}>
 
         <Image src={logo} width="250px"/>
       
@@ -42,6 +44,7 @@ export default function Recompensas() {
                 border="2px"
                 color="whiteAlpha.900"
                 fontSize="15px"
+                onClick={() => navigate('/questionario')}
                 >
                     Resgate agora
                 </Button>
