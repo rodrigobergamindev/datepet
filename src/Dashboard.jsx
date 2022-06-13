@@ -39,6 +39,7 @@ export default function Dashboard() {
             type='submit'
             width="100%"
             color="whiteAlpha.900"
+            onClick={() => navigate('/')}
           >
             Sair
           </Button>
