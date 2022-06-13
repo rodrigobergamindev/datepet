@@ -40,7 +40,7 @@ export default function SignIn() {
           
         <VStack spacing={10}>
         <Formik
-      initialValues={{ cpf: '', password: '', tipo: '' }}
+      initialValues={{ cpf: '', password: '', tipo: value }}
       onSubmit={(values, actions) => {
         console.log(values)
         
@@ -74,7 +74,7 @@ export default function SignIn() {
             {({ field, form }) => (
               <FormControl isInvalid={form.errors.tipo && form.touched.tipo}>
                 
-                <RadioGroup {...field} onChange={setValue} id="tipo" value={value}>
+                <RadioGroup onChange={setValue} id="tipo" value={value}>
                   <Stack marginTop="20px" direction='row'>
                     <Radio value='Paciente' >Paciente</Radio>
                     <Radio value='Gestão'>Gestão</Radio>
