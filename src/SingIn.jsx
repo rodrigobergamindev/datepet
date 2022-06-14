@@ -18,19 +18,15 @@ import {Formik, Field, Form} from 'formik'
 import { Link, useNavigate } from "react-router-dom";
 import logo from './images/logo.png'
 import { setSessionCookie, getSessionCookie } from './contexts/useSession';
+import Logo from './Logo';
+import axios from 'axios';
+
 
 export default function SignIn() {
 
   const [value, setValue] = useState('Paciente')
   const [session, setSession] = useState(getSessionCookie())
   const navigate = useNavigate()
-
-    useEffect(() => {
-      if(session){
-        if(session === 'Gestao') return navigate('/gestao')
-        if(session === 'Paciente') return navigate('/recompensas')
-      }
-    },[session])
    
     
     function validate(value) {
@@ -46,50 +42,30 @@ export default function SignIn() {
 
       <VStack width="100%" height="100vh" alignItems="center" justifyContent="center" spacing={12}>
 
-        <Image src={logo} width="250px"/>
+        <Logo/>
       
           
         <VStack spacing={10}>
         <Formik
-      initialValues={{ cpf: '', password: '', tipo: '' }}
+      initialValues={{ username: '', password: ''}}
       onSubmit={(values, actions) => {
         
-        const {cpf, password, tipo} = values
+        const {username, password} = values
+
         
-
-        if(cpf && password){
-          if(tipo === 'Paciente'){
-            setSessionCookie(tipo)
-            return setTimeout(() => {
-              
-              window.location.reload()
-              navigate('/recompensas')
-              
-            } , 1000)
-          }
-
-          if(tipo === 'Gestao'){
-            setSessionCookie(tipo)
-            return setTimeout(() => {
-             
-              window.location.reload()
-              navigate('/gestao')
-              
-            }, 1000)
-          }
-        }
+       
         
       }}
 
     >
       {(props) => (
         <Form>
-          <Field name='cpf' validate={validate}>
+          <Field name='username' validate={validate}>
             {({ field, form }) => (
-              <FormControl isInvalid={form.errors.cpf && form.touched.cpf}>
-                <FormLabel htmlFor='cpf' textAlign="center" fontWeight="bold" color="blue.700">CPF</FormLabel>
-                <Input {...field} id='cpf' backgroundColor="gray.300" placeholder='Digite seu cpf' />
-                <FormErrorMessage>{form.errors.cpf}</FormErrorMessage>
+              <FormControl isInvalid={form.errors.username && form.touched.username}>
+                <FormLabel htmlFor='username' textAlign="center" fontWeight="bold" color="blue.700">Username</FormLabel>
+                <Input {...field} id='username' backgroundColor="gray.300" placeholder='@myusername...' />
+                <FormErrorMessage>{form.errors.username}</FormErrorMessage>
               </FormControl>
             )}
           </Field>
@@ -98,24 +74,9 @@ export default function SignIn() {
           <Field name='password' validate={validate}>
             {({ field, form }) => (
               <FormControl isInvalid={form.errors.password && form.touched.password}>
-                <FormLabel marginTop="12px" htmlFor='password' textAlign="center" fontWeight="bold"  color="blue.700">Senha</FormLabel>
-                <Input {...field} id='password' type="password" backgroundColor="gray.300" placeholder='Digite sua senha' />
+                <FormLabel marginTop="12px" htmlFor='password' textAlign="center" fontWeight="bold"  color="blue.700">Password</FormLabel>
+                <Input {...field} id='password' type="password" backgroundColor="gray.300" placeholder='password' />
                 <FormErrorMessage>{form.errors.password}</FormErrorMessage>
-              </FormControl>
-            )}
-          </Field>
-
-          <Field name='tipo' validate={validate}>
-            {({ field, form }) => (
-              <FormControl isInvalid={form.errors.tipo && form.touched.tipo}>
-                
-                <RadioGroup id="tipo" name="tipo">
-                  <Stack marginTop="20px" direction='row'>
-                    <Radio {...field} value='Paciente'  name="tipo" >Paciente</Radio>
-                    <Radio  {...field} value='Gestao' name="tipo">Gestão</Radio>
-                  </Stack>
-                </RadioGroup>
-                <FormErrorMessage>{form.errors.tipo}</FormErrorMessage>
               </FormControl>
             )}
           </Field>
