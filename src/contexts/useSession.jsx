@@ -4,16 +4,16 @@ import { Cookies } from 'react-cookie';
 const cookies = new Cookies()
 
 
-export function setSessionCookie(token){
+export function setSessionCookie(session){
   
-  cookies.remove('token')
-  cookies.set('token', token)
+  cookies.remove('session')
+  cookies.set('session', session)
 
 };
 
 export function getSessionCookie(){
   
-  const sessionCookie = cookies.get('token')
+  const sessionCookie = cookies.get('session')
   
   if (sessionCookie === undefined) {
     return;

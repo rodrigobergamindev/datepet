@@ -21,7 +21,7 @@ import {
   } from '@chakra-ui/react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars,faHome, faList, faLocationDot, faPhone, faCalendar,faRss ,faUser, faSignOut} from '@fortawesome/free-solid-svg-icons'
+import { faBars,faHome, faCalendar,faRss ,faPaw, faSignOut} from '@fortawesome/free-solid-svg-icons'
 import {Link, useNavigate} from 'react-router-dom'
 import { logout } from '../contexts/useSession'
 
@@ -65,42 +65,23 @@ export default function DrawerMenu() {
             <VStack alignSelf="center">
                 <Avatar src="https://bit.ly/dan-abramov" size="xl"/>
                 <Text fontSize="15px" color="blue.900" fontWeight="bold">John Wick</Text> 
-                
-                <HStack border="1px" borderColor="blue.400">
 
-                
-                  <Box as={Flex} w="150px" height="30px" backgroundColor="blue.400" alignItems="center" justifyContent="center">
-                    <Text color="whiteAlpha.900" fontWeight="bold" fontSize="12px">🌟 1541 points</Text>
-                  </Box>
-
-                  <Box w="30%" height="30px" backgroundColor="whiteAlpha.900">
-
-                  </Box>
-
-                </HStack>
             </VStack>
 
 
-            <VStack width="full">
+              <VStack width="full">
 
-                    
-                
                 <Button colorScheme="blue" size='lg' width={"full"}>
-                  <HStack align="center" justify="center"><FontAwesomeIcon icon={faHome} fontSize="16px"/><Link to="/recompensas"><Text>Início</Text></Link></HStack>
+                  <HStack align="center" justify="center"><FontAwesomeIcon icon={faHome} fontSize="16px"/>
+                  <Link to="/profile">
+                    <Text>Minha Conta</Text></Link></HStack>
                    
                   </Button>
               
                 </VStack>
-              
-                <VStack width="full">
-                  <Button colorScheme="blue" size='lg' width={"full"}>
-                    <HStack align="center" justify="center"><FontAwesomeIcon icon={faUser} fontSize="16px"/><Text>Alterar Cadastro</Text></HStack>
-                   
-                  </Button>
-                </VStack>
-                
 
                 
+    
                 <VStack width="full">
 
                     
@@ -117,7 +98,7 @@ export default function DrawerMenu() {
                     
                 
                 <Button colorScheme="blue" size='lg' width={"full"}>
-                  <HStack align="center" justify="center"><FontAwesomeIcon icon={faRss} fontSize="16px"/><Link to="/informativo"><Text>Novidades</Text></Link></HStack>
+                  <HStack align="center" justify="center"><FontAwesomeIcon icon={faPaw} fontSize="16px"/><Link to="/informativo"><Text>Meus Pets</Text></Link></HStack>
                    
                   </Button>
               

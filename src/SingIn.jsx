@@ -19,14 +19,18 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from './images/logo.png'
 import { setSessionCookie, getSessionCookie } from './contexts/useSession';
 import Logo from './Logo';
-import axios from 'axios';
-
 
 export default function SignIn() {
 
   const [value, setValue] = useState('Paciente')
   const [session, setSession] = useState(getSessionCookie())
   const navigate = useNavigate()
+
+    useEffect(() => {
+    
+        if(session) return navigate('/profile')
+      
+    },[session])
    
     
     function validate(value) {
@@ -47,13 +51,24 @@ export default function SignIn() {
           
         <VStack spacing={10}>
         <Formik
-      initialValues={{ username: '', password: ''}}
+      initialValues={{ username: '', password: '' }}
       onSubmit={(values, actions) => {
         
-        const {username, password} = values
-
+        const {username, password, tipo} = values
         
-       
+
+        if(username === 'admin' && password === 'admin'){
+     
+            setSessionCookie(username)
+            return setTimeout(() => {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+              window.location.reload()
+              navigate('/profile')
+              
+            } , 1000)
+     
+
+        }
         
       }}
 
@@ -64,7 +79,7 @@ export default function SignIn() {
             {({ field, form }) => (
               <FormControl isInvalid={form.errors.username && form.touched.username}>
                 <FormLabel htmlFor='username' textAlign="center" fontWeight="bold" color="blue.700">Username</FormLabel>
-                <Input {...field} id='username' backgroundColor="gray.300" placeholder='@myusername...' />
+                <Input {...field} id='username' backgroundColor="gray.300" placeholder='type your username' />
                 <FormErrorMessage>{form.errors.username}</FormErrorMessage>
               </FormControl>
             )}
@@ -74,13 +89,12 @@ export default function SignIn() {
           <Field name='password' validate={validate}>
             {({ field, form }) => (
               <FormControl isInvalid={form.errors.password && form.touched.password}>
-                <FormLabel marginTop="12px" htmlFor='password' textAlign="center" fontWeight="bold"  color="blue.700">Password</FormLabel>
-                <Input {...field} id='password' type="password" backgroundColor="gray.300" placeholder='password' />
+                <FormLabel marginTop="12px" htmlFor='password' textAlign="center" fontWeight="bold"  color="blue.700">Senha</FormLabel>
+                <Input {...field} id='password' type="password" backgroundColor="gray.300" placeholder='type your password' />
                 <FormErrorMessage>{form.errors.password}</FormErrorMessage>
               </FormControl>
             )}
           </Field>
-
 
           <Button
             mt={4}
@@ -98,13 +112,6 @@ export default function SignIn() {
 
 
       <VStack alignSelf="flex-start" alignItems="flex-start" justifyContent="flex-start">
-        <Link to="/register">
-          <Text color="blue.500">+ Criar conta</Text> 
-        </Link>
-
-        <Link to="/forgot">
-          <Text color="blue.500">Esqueci a senha</Text> 
-        </Link>
       </VStack>
         </VStack>
       
