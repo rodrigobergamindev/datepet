@@ -39,7 +39,7 @@ function App() {
     <Routes>
 
               <Route path='register' element={<Register/>}/>
-              <Route path='profile/:slug' element={<Profile/>}/>
+            
               <Route path='gestao' element={<Gestao/>}/>
               <Route path='/' element={<SignIn/>}/>
               <Route path='pacient' element={<Pacient/>}/>
