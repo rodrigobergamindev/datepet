@@ -10,7 +10,7 @@ import {
   BrowserRouter,
   Routes
 } from "react-router-dom";
-import Profile from './Profile';
+
 import Register from './Register';
 import SignIn from './SingIn';
 import Gestao from './Gestao'
