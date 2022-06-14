@@ -14,18 +14,31 @@ import logo from './images/logo.png'
 import bradesco from './images/bradesco.png'
 import ultrafarma from './images/ultrafarma.png'
 import { Link, useNavigate } from "react-router-dom";
-
+import {getSessionCookie} from './contexts/useSession'
 
 export default function Recompensas() {
 
     const navigate = useNavigate()
     
 
+
+    useEffect(() => {
+        if(getSessionCookie() === undefined) return navigate('/')
+        if(getSessionCookie() === 'Gestao') return navigate('/gestao')
+    },[])
+
   return (
 
       <VStack width="100%" mt={10} alignItems="center" justifyContent="center" spacing={12}>
 
         <Image src={logo} width="250px"/>
+
+
+        <Text alignSelf="center" justifySelf="center" textAlign="center" fontSize="lg" fontStyle="italic" color="blue.900">
+            Olá John Wick!
+            <br/>
+            Participe do nosso questionário e ganhe recompensas
+        </Text>
       
           
         <VStack spacing={10} width="100%" padding="40px">

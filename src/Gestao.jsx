@@ -13,11 +13,19 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from './images/logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import {getSessionCookie} from './contexts/useSession'
+
 
 export default function Gestao() {
 
     const navigate = useNavigate()
     
+    useEffect(() => {
+      
+      if(getSessionCookie() === undefined) return navigate('/')
+      if(getSessionCookie() === 'Paciente') return navigate('/recompensas')
+     
+  },[])
 
 
   return (
@@ -56,28 +64,28 @@ export default function Gestao() {
 
         <VStack padding="20px" spacing={6}>
         <HStack width="100%" boxShadow="xl" borderBottom="1px" borderColor="gray.300" padding="10px">
-            <Text>John Wick Sousa - 330.454.555-55</Text>
+            <Link to="/pacient"><Text>Samuel Spencer - 330.454.555-55</Text></Link>
             <FontAwesomeIcon icon={faSearch} fontSize="20px" color="#2D3748"/>
         </HStack>
 
         <HStack width="100%" boxShadow="xl" borderBottom="1px" borderColor="gray.300" padding="10px">
-            <Text>John Wick Sousa - 330.454.555-55</Text>
+        <Link to="/pacient"><Text>Samuel Spencer - 330.454.555-55</Text></Link>
             <FontAwesomeIcon icon={faSearch} fontSize="20px" color="#2D3748"/>
         </HStack>
 
 
         <HStack width="100%" boxShadow="xl" borderBottom="1px" borderColor="gray.300" padding="10px">
-            <Text>John Wick Sousa - 330.454.555-55</Text>
+        <Link to="/pacient"><Text>Samuel Spencer - 330.454.555-55</Text></Link>
             <FontAwesomeIcon icon={faSearch} fontSize="20px" color="#2D3748"/>
         </HStack>
 
         <HStack width="100%" boxShadow="xl" borderBottom="1px" borderColor="gray.300" padding="10px">
-            <Text>John Wick Sousa - 330.454.555-55</Text>
+        <Link to="/pacient"><Text>Samuel Spencer - 330.454.555-55</Text></Link>
             <FontAwesomeIcon icon={faSearch} fontSize="20px" color="#2D3748"/>
         </HStack>
 
         <HStack width="100%" boxShadow="xl" borderBottom="1px" borderColor="gray.300" padding="10px">
-            <Text>John Wick Sousa - 330.454.555-55</Text>
+        <Link to="/pacient"><Text>Samuel Spencer - 330.454.555-55</Text></Link>
             <FontAwesomeIcon icon={faSearch} fontSize="20px" color="#2D3748"/>
         </HStack>
         </VStack>

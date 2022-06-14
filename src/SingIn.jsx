@@ -17,11 +17,21 @@ import {
 import {Formik, Field, Form} from 'formik'
 import { Link, useNavigate } from "react-router-dom";
 import logo from './images/logo.png'
+import { setSessionCookie, getSessionCookie } from './contexts/useSession';
 
 export default function SignIn() {
 
   const [value, setValue] = useState('Paciente')
-    const navigate = useNavigate()
+  const [session, setSession] = useState(getSessionCookie())
+  const navigate = useNavigate()
+
+    useEffect(() => {
+      if(session){
+        if(session === 'Gestao') return navigate('/gestao')
+        if(session === 'Paciente') return navigate('/recompensas')
+      }
+    },[session])
+   
     
     function validate(value) {
         let error
@@ -30,6 +40,7 @@ export default function SignIn() {
         } 
         return error
       }
+      
 
   return (
 
@@ -40,9 +51,33 @@ export default function SignIn() {
           
         <VStack spacing={10}>
         <Formik
-      initialValues={{ cpf: '', password: '', tipo: value }}
+      initialValues={{ cpf: '', password: '', tipo: '' }}
       onSubmit={(values, actions) => {
-        console.log(values)
+        
+        const {cpf, password, tipo} = values
+        
+
+        if(cpf && password){
+          if(tipo === 'Paciente'){
+            setSessionCookie(tipo)
+            return setTimeout(() => {
+              
+              window.location.reload()
+              navigate('/recompensas')
+              
+            } , 1000)
+          }
+
+          if(tipo === 'Gestao'){
+            setSessionCookie(tipo)
+            return setTimeout(() => {
+             
+              window.location.reload()
+              navigate('/gestao')
+              
+            }, 1000)
+          }
+        }
         
       }}
 
@@ -74,10 +109,10 @@ export default function SignIn() {
             {({ field, form }) => (
               <FormControl isInvalid={form.errors.tipo && form.touched.tipo}>
                 
-                <RadioGroup onChange={setValue} id="tipo" value={value}>
+                <RadioGroup id="tipo" name="tipo">
                   <Stack marginTop="20px" direction='row'>
-                    <Radio value='Paciente' >Paciente</Radio>
-                    <Radio value='Gestão'>Gestão</Radio>
+                    <Radio {...field} value='Paciente'  name="tipo" >Paciente</Radio>
+                    <Radio  {...field} value='Gestao' name="tipo">Gestão</Radio>
                   </Stack>
                 </RadioGroup>
                 <FormErrorMessage>{form.errors.tipo}</FormErrorMessage>
@@ -90,7 +125,7 @@ export default function SignIn() {
             mt={4}
             colorScheme="blue"
             isLoading={props.isSubmitting}
-            onClick={() => setTimeout(() => navigate('/recompensas'), 1000)}
+          
             type='submit'
             width="100%"
           >

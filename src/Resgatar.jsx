@@ -5,6 +5,9 @@ import {
     Image,
     Avatar,
     Text,
+    Flex,
+    HStack,
+    Box,
   } from '@chakra-ui/react';
 
 import logo from './images/logo.png'
@@ -23,6 +26,19 @@ export default function Resgatar() {
         <VStack>
             <Avatar src="https://bit.ly/dan-abramov" size="xl"/>
             <Text fontSize="15px" color="blue.900" fontWeight="bold">John Wick</Text> 
+
+            <HStack border="1px" borderColor="blue.400">
+
+                
+                  <Box as={Flex} w="150px" height="30px" backgroundColor="blue.400" alignItems="center" justifyContent="center">
+                    <Text color="whiteAlpha.900" fontWeight="bold" fontSize="12px">🌟 1750 points</Text>
+                  </Box>
+
+                  <Box w="10%" height="30px" backgroundColor="whiteAlpha.900">
+
+                  </Box>
+
+                </HStack>
         </VStack>
           
         <VStack spacing={5} width="100%" padding="20px">
