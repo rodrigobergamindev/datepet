@@ -19,7 +19,7 @@ import graph from './images/graph.png'
 
 export default function Pacient() {
 
-    const navigate = useNavigate()
+
     
 
 
