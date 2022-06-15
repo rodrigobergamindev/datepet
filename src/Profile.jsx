@@ -40,7 +40,7 @@ export default function Profile() {
                  borderRadius="5px" 
                  fontSize="xl"
                  onClick={() => navigate('/create')}
-                 >Add Reminder</Button>
+                 >Add Task</Button>
 
             <Button 
              
