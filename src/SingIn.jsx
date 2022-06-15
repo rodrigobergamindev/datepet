@@ -64,7 +64,7 @@ onSubmit={(values, actions) => {
 
 const {username, password} = values
 
-
+actions.setSubmitting(false)
 if(username === 'admin' && password === 'admin'){
 
     setSessionCookie(username)
