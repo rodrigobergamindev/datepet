@@ -74,31 +74,20 @@ export default function DrawerMenu() {
                 <Button colorScheme="blue" size='lg' width={"full"}>
                   <HStack align="center" justify="center"><FontAwesomeIcon icon={faHome} fontSize="16px"/>
                   <Link to="/profile">
-                    <Text>Minha Conta</Text></Link></HStack>
+                    <Text>Account</Text></Link></HStack>
                    
                   </Button>
               
                 </VStack>
 
                 
-    
-                <VStack width="full">
-
-                    
-                
-                <Button colorScheme="blue" size='lg' width={"full"}>
-                  <HStack align="center" justify="center"><FontAwesomeIcon icon={faCalendar} fontSize="16px"/><Link to="/agenda"><Text>Agenda</Text></Link></HStack>
-                   
-                  </Button>
-              
-                </VStack>
 
                 <VStack width="full">
 
                     
                 
                 <Button colorScheme="blue" size='lg' width={"full"}>
-                  <HStack align="center" justify="center"><FontAwesomeIcon icon={faPaw} fontSize="16px"/><Link to="/informativo"><Text>Meus Pets</Text></Link></HStack>
+                  <HStack align="center" justify="center"><FontAwesomeIcon icon={faPaw} fontSize="16px"/><Link to="/informativo"><Text>My Pets</Text></Link></HStack>
                    
                   </Button>
               
@@ -110,7 +99,7 @@ export default function DrawerMenu() {
                   <Button colorScheme="blue" size='lg' width={"full"} onClick={handleLogout}>
                   <HStack align="center" justify="center"><FontAwesomeIcon icon={faSignOut} fontSize="16px"/>
                   
-                  <Text>Sair</Text>
+                  <Text>Sing Out</Text>
             
                   </HStack>
                   </Button>
