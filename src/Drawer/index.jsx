@@ -71,7 +71,10 @@ export default function DrawerMenu() {
 
               <VStack width="full">
 
-                <Button colorScheme="blue" size='lg' width={"full"} onClick={() => navigate('/profile')}>
+                <Button colorScheme="blue" size='lg' width={"full"} onClick={() => {
+                  navigate('/profile')
+                  window.location.reload()
+                }}>
                   <HStack align="center" justify="center"><FontAwesomeIcon icon={faHome} fontSize="16px"/>
                   
                     <Text>Account</Text></HStack>
