@@ -63,7 +63,7 @@ export default function Create() {
         initialValues={{ title: '', date: '', name: '', hour: '', description: '' }}
             onSubmit={(values, actions) => {
             
-                cookies.set(`${values.name}`, values)
+                cookies.set(`${Date.now()}`, values)
                
                 navigate('/profile')
             }}>
