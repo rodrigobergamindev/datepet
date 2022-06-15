@@ -2,6 +2,7 @@ import { Box, Button, Image, VStack, Text, HStack, Heading } from '@chakra-ui/re
 import React, { useEffect, useState } from 'react'
 import {useNavigate} from 'react-router-dom'
 import {Cookies} from 'react-cookie'
+import {logout} from './contexts/useSession'
 
 export default function Profile() {
 
@@ -16,16 +17,44 @@ export default function Profile() {
         window.location.reload()
     }
 
+    function handleLogout(){
+        logout()
+        navigate('/')
+        window.location.reload()
+    }
+
+
   return (
     <VStack spacing={10} height="100vh" padding="50px"  width="100%">
+          <HStack
+          alignSelf="flex-end"
+          justifySelf="flex-end"
+          >
+           <Button 
+                colorScheme="blue"
+                 size="lg" 
+                 borderRadius="5px" 
+                 fontSize="xl"
+                 onClick={() => navigate('/create')}
+                 >Add Reminder</Button>
 
+            <Button 
+             
+             colorScheme="red"
+              size="lg" 
+              borderRadius="5px" 
+              fontSize="xl"
+              onClick={handleLogout}
+              >Sign Out</Button>
+          </HStack>
+          
           <VStack justifyContent="space-between" alignItems="flex-start" width="100%">
           {
             pets.map(item => {
                 if(item[0] !== 'session') {
                     return (
                         <HStack width="100%" key={item[0]} >
-                            <Box >
+                            <Box width="5%" >
                             <Button 
                             colorScheme="red"
                              size="sm" 
@@ -63,29 +92,6 @@ export default function Profile() {
           }
           </VStack>
             
-           <HStack
-          position="absolute"
-          right="20px"
-          bottom="20px"
-           >
-            <Button 
-                 colorScheme="blue"
-                  size="lg" 
-                  borderRadius="5px" 
-                  fontSize="xl"
-                  onClick={() => navigate('/create')}
-                  >Add Reminder</Button>
-
-             <Button 
-              
-              colorScheme="red"
-               size="lg" 
-               borderRadius="5px" 
-               fontSize="xl"
-             
-               >Sign Out</Button>
-           </HStack>
-           
             
         </VStack>
   )

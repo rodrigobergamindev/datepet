@@ -64,7 +64,7 @@ export default function Create() {
             onSubmit={(values, actions) => {
             
                 cookies.set(`${values.name}`, values)
-                window.location.reload()
+               
                 navigate('/profile')
             }}>
 
