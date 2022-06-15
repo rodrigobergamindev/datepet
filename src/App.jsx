@@ -14,8 +14,8 @@ import {
 
 import SignIn from './SingIn';
 
-import Resgatar from './Resgatar';
-import Agenda from './Agenda';
+
+
 import DrawerMenu from './Drawer';
 import { Heading, HStack, Text } from '@chakra-ui/react';
 import { getSessionCookie, setSession, logout, SessionContext } from './contexts/useSession';
@@ -43,8 +43,6 @@ function App() {
             
               
               <Route path='/' element={<SignIn/>}/>
-              <Route path='resgatar' element={<Resgatar/>}/>
-              <Route path='agenda' element={<Agenda/>}/>
               <Route path='profile' element={<Profile/>}/>
               <Route path='create' element={<Create/>}/>
     </Routes>
