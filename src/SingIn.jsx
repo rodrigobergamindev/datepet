@@ -57,7 +57,7 @@ export default function SignIn() {
         <Logo/>
 
   
-      <VStack spacing={10} border="1px" borderColor="gray.300" padding="20px">
+      <VStack  spacing={10} border="1px" borderColor="gray.300" padding="20px">
         <Formik
 initialValues={{ username: '', password: '' }}
 onSubmit={(values, actions) => {
