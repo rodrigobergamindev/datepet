@@ -21,6 +21,8 @@ import { Heading, HStack, Text } from '@chakra-ui/react';
 import { getSessionCookie, setSession, logout, SessionContext } from './contexts/useSession';
 import Profile from './Profile';
 import Create from './Create';
+import Rewards from './Rewards';
+import Rescue from './Rescue';
 
 
 function App() {
@@ -45,6 +47,8 @@ function App() {
               <Route path='/' element={<SignIn/>}/>
               <Route path='profile' element={<Profile/>}/>
               <Route path='create' element={<Create/>}/>
+              <Route path='rewards' element={<Rewards/>}/>
+              <Route path='rescue' element={<Rescue/>}/>
     </Routes>
     </SessionContext.Provider>
 

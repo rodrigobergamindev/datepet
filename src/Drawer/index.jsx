@@ -21,7 +21,7 @@ import {
   } from '@chakra-ui/react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars,faHome, faCalendar,faRss ,faPaw, faSignOut} from '@fortawesome/free-solid-svg-icons'
+import { faBars,faHome, faCalendar,faRss ,faPaw, faSignOut, faTrophy} from '@fortawesome/free-solid-svg-icons'
 import {Link, useNavigate} from 'react-router-dom'
 import { logout } from '../contexts/useSession'
 
@@ -71,10 +71,7 @@ export default function DrawerMenu() {
 
               <VStack width="full">
 
-                <Button colorScheme="blue" size='lg' width={"full"} onClick={() => {
-                  navigate('/profile')
-                  window.location.reload()
-                }}>
+                <Button colorScheme="blue" size='lg' width={"full"}>
                   <HStack align="center" justify="center"><FontAwesomeIcon icon={faHome} fontSize="16px"/>
                   
                     <Text>Account</Text></HStack>
@@ -89,8 +86,22 @@ export default function DrawerMenu() {
 
                     
                 
-                <Button colorScheme="blue" size='lg' width={"full"}>
-                  <HStack align="center" justify="center"><FontAwesomeIcon icon={faPaw} fontSize="16px"/><Link to="/informativo"><Text>My Pets</Text></Link></HStack>
+                <Button colorScheme="blue" size='lg' width={"full"} onClick={() => {
+                  navigate('/profile')
+                  window.location.reload()
+                }}>
+                  <HStack align="center" justify="center"><FontAwesomeIcon icon={faPaw} fontSize="16px"/><Text>My Pets</Text></HStack>
+                   
+                  </Button>
+              
+                </VStack>
+
+                <VStack width="full">
+                <Button colorScheme="blue" size='lg' width={"full"} onClick={() => {
+                  navigate('/rewards')
+                  window.location.reload()
+                }}>
+                  <HStack align="center" justify="center"><FontAwesomeIcon icon={faTrophy} fontSize="16px"/><Text>My Rewards</Text></HStack>
                    
                   </Button>
               
