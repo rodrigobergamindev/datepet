@@ -71,10 +71,10 @@ export default function DrawerMenu() {
 
               <VStack width="full">
 
-                <Button colorScheme="blue" size='lg' width={"full"}>
+                <Button colorScheme="blue" size='lg' width={"full"} onClick={() => navigate('/profile')}>
                   <HStack align="center" justify="center"><FontAwesomeIcon icon={faHome} fontSize="16px"/>
-                  <Link to="/profile">
-                    <Text>Account</Text></Link></HStack>
+                  
+                    <Text>Account</Text></HStack>
                    
                   </Button>
               
