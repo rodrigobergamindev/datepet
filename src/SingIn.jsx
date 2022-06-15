@@ -47,17 +47,17 @@ export default function SignIn() {
       
 
   return (
-    <Grid templateColumns='repeat(2, 1fr)'  width="100%" justifyItems="center">
+    <Grid templateColumns='repeat(2, 1fr)'  width="100%" height="100vh" justifyItems="center">
 
     
-      <Image src={background} height="950px" objectFit="cover" width="100%"/>
+      <Image src={background} height="100%" objectFit="cover" width="100%"/>
   
-      <VStack border="1px" padding="20px" borderRadius="10px" borderColor="gray.300" alignSelf="center" maxW="100%" alignItems="center" justifyContent="center" spacing={12}>
+      <VStack  borderRadius="5px" borderColor="gray.300" alignSelf="center" alignItems="center" justifyContent="center" spacing={12}>
 
         <Logo/>
 
   
-      <VStack spacing={10}>
+      <VStack spacing={10} border="1px" borderColor="gray.300" padding="20px">
         <Formik
 initialValues={{ username: '', password: '' }}
 onSubmit={(values, actions) => {
@@ -76,6 +76,8 @@ if(username === 'admin' && password === 'admin'){
     } , 1000)
 
 
+}else {
+  alert('invalid credentials')
 }
 
 }}

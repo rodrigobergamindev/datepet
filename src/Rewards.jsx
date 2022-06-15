@@ -51,7 +51,7 @@ export default function Rewards() {
         <Box boxShadow="xl" maxWidth="250px" width="100%"   height="320px" >
 
             <VStack width="100%" height="100%" alignItems="flex-start" border="1px" borderColor="gray.300" padding="10px" justifyContent="space-between">
-                <Image src={petz} width="100%"/>
+                <Image src={petz} height="175px" width="100%"/>
 
                 <Text fontSize="15px" fontWeight="bold" color="blue.900">Petz</Text>
                 <Text fontSize="13px" fontStyle="italic" color="blue.900">Obtenha descontos exclusivos da rede Petz!</Text>

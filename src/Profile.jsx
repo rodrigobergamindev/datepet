@@ -1,4 +1,4 @@
-import { Box, Button, Image, VStack, Text, HStack, Heading } from '@chakra-ui/react'
+import { Box, Button, Image, VStack, Text, HStack, Heading, Flex } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import {useNavigate} from 'react-router-dom'
 import {Cookies} from 'react-cookie'
@@ -27,8 +27,12 @@ export default function Profile() {
   return (
     <VStack spacing={10} height="100vh" padding="50px"  width="100%">
           <HStack
-          alignSelf="flex-end"
-          justifySelf="flex-end"
+          alignSelf="center"
+          justifySelf="center"
+          maxWidth="1200px"
+          width="100%"
+          
+          justifyContent="flex-end"
           >
            <Button 
                 colorScheme="blue"
@@ -48,33 +52,47 @@ export default function Profile() {
               >Sign Out</Button>
           </HStack>
           
-          <VStack justifyContent="space-between" alignItems="flex-start" width="100%">
+          <HStack justifyContent="flex-start" alignItems="flex-start" maxWidth="1200px" width="100%" spacing={10}>
           {
             pets.map(item => {
                 if(item[0] !== 'session') {
                     return (
-                        <HStack width="100%" key={item[0]} >
-                            <Box width="5%" >
-                            <Button 
-                            colorScheme="red"
+                        <VStack width="100%" maxWidth="250px" key={item[0]} backgroundColor="yellow.200" boxShadow="dark-lg" transition="all 0.3s ease" transform="rotate(10deg)" _hover={
+                            
+                                {
+                                    transform:"rotate(0deg)",
+                                    
+                                }
+                            
+                        }>
+                            <HStack width="100%" >
+                            <Box 
+                            as={Flex}
+                            alignItems="center"
+                            justifyContent="center"
+                            padding="5px"
+                            backgroundColor="green.500"
+                            color="white"
                              size="sm" 
-                            borderRadius="5px" 
-                                fontSize="xl"
-                                onClick={() => handleRemoveReminder(item[0])}>X</Button>
+                            width="35px"
+                            
+                            cursor="pointer"
+                            fontSize="md"
+                            onClick={() => handleRemoveReminder(item[0])}>✓</Box>
 
 
-                                <Text fontSize="sm">{new Date(item[1].date).toLocaleDateString('pt-BR', {
+                                <Text fontSize="md">{new Date(item[1].date).toLocaleDateString('pt-BR', {
                                     dateStyle:'medium'
                                 }).toUpperCase()}</Text>
 
-                                <Text fontSize="sm" fontWeight="bold">
+                                <Text fontSize="md" fontWeight="bold">
                                     {item[1].hour}
                                 </Text>
-                            </Box>
+                            </HStack>
 
-                            <VStack width="100%" height="100%" backgroundColor="#3E2723" color="whiteAlpha.900" alignItems="flex-start" borderRadius="10px" padding="10px">
-                                <Text fontWeight="bold" fontStyle="italic">
-                                    Lembrete: {item[1].title.toUpperCase()}
+                            <VStack width="100%" height="100%" color="#3E2723" alignItems="flex-start" borderRadius="10px" padding="10px" fontFamily="Architects Daughter">
+                                <Text fontSize="3xl" fontStyle="italic">
+                                   {item[1].title}
                                 </Text>
                                 <Text fontSize="sm">
                                     Pet: {item[1].name}
@@ -84,13 +102,13 @@ export default function Profile() {
                                     Tarefa: {item[1].description}
                                 </Text>
                             </VStack>
-                        </HStack>
+                        </VStack>
                     )
                 }
 
             })
           }
-          </VStack>
+          </HStack>
             
             
         </VStack>
