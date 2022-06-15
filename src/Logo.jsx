@@ -5,8 +5,8 @@ import logo from './images/logo.png'
 export default function Logo() {
   return (
     <HStack>
-        <Heading color="tomato">DATE</Heading>
-        <Heading color="gray.700">PET</Heading>
+        <Heading color="#3E2723">DATE</Heading>
+        <Heading color="gray.300">PET</Heading>
         <Image src={logo} objectFit="fill" maxW="70px" maxHeight="70px"/>
     </HStack>
   )

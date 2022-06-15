@@ -17,9 +17,10 @@ import SignIn from './SingIn';
 import Resgatar from './Resgatar';
 import Agenda from './Agenda';
 import DrawerMenu from './Drawer';
-import { HStack } from '@chakra-ui/react';
+import { Heading, HStack, Text } from '@chakra-ui/react';
 import { getSessionCookie, setSession, logout, SessionContext } from './contexts/useSession';
 import Profile from './Profile';
+import Create from './Create';
 
 
 function App() {
@@ -32,7 +33,8 @@ function App() {
     
     <SessionContext.Provider value={session}>
     
-    {!!session && <HStack alignItems="flex-end" justifyContent="flex-end" backgroundColor="blue.400">
+    {!!session && <HStack alignItems="center" justifyContent="flex-end" backgroundColor="#3E2723">
+      <Text color="whiteAlpha.900" fontWeight="bold">DATE PET</Text>
       <DrawerMenu/>
     </HStack>
     }
@@ -44,6 +46,7 @@ function App() {
               <Route path='resgatar' element={<Resgatar/>}/>
               <Route path='agenda' element={<Agenda/>}/>
               <Route path='profile' element={<Profile/>}/>
+              <Route path='create' element={<Create/>}/>
     </Routes>
     </SessionContext.Provider>
 
